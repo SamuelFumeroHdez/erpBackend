@@ -31,13 +31,13 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @NotBlank(message = "Name is required")
+    /*@NotBlank(message = "Name is required")
     @Column(name = "name", nullable = false)
-    private String name;
+    private String name;*/
 
-    @NotBlank(message = "Lastname is required")
+    /*@NotBlank(message = "Lastname is required")
     @Column(name = "lastname", nullable = false)
-    private String lastName;
+    private String lastName;*/
 
     @Email
     @NotBlank(message = "Email is required")
