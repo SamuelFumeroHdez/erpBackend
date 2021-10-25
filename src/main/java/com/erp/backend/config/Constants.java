@@ -1,4 +1,4 @@
-package com.SamuelFumeroHdez.backend.config;
+package com.erp.backend.config;
 
 import lombok.experimental.UtilityClass;
 

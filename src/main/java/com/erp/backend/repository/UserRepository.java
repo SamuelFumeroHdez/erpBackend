@@ -1,6 +1,6 @@
-package com.SamuelFumeroHdez.backend.repository;
+package com.erp.backend.repository;
 
-import com.SamuelFumeroHdez.backend.models.User;
+import com.erp.backend.models.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

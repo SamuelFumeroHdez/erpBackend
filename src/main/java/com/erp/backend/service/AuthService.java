@@ -1,18 +1,16 @@
-package com.SamuelFumeroHdez.backend.service;
+package com.erp.backend.service;
 
-import com.SamuelFumeroHdez.backend.dto.RegisterRequest;
-import com.SamuelFumeroHdez.backend.exception.ActivationException;
-import com.SamuelFumeroHdez.backend.models.AccountVerificationToken;
-import com.SamuelFumeroHdez.backend.models.NotificationEmail;
+import com.erp.backend.dto.RegisterRequest;
+import com.erp.backend.exception.ActivationException;
+import com.erp.backend.models.AccountVerificationToken;
+import com.erp.backend.models.NotificationEmail;
 
-import com.SamuelFumeroHdez.backend.models.User;
-import com.SamuelFumeroHdez.backend.repository.TokenRepository;
-import com.SamuelFumeroHdez.backend.repository.UserRepository;
+import com.erp.backend.models.User;
+import com.erp.backend.repository.TokenRepository;
+import com.erp.backend.repository.UserRepository;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,15 +18,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.mail.MessagingException;
 import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
 
-import static com.SamuelFumeroHdez.backend.config.Constants.EMAIL_ACTIVATION;
+import static com.erp.backend.config.Constants.EMAIL_ACTIVATION;
 
 @Service
 @AllArgsConstructor
-
 public class AuthService {
 
     UserRepository userRepository;
@@ -38,7 +36,7 @@ public class AuthService {
     MailBuilder mailBuilder;
 
     @Transactional
-    public void register(RegisterRequest registerRequest) throws java.rmi.activation.ActivationException {
+    public void register(RegisterRequest registerRequest) throws MessagingException {
         User user = new User();
         user.setUserName(registerRequest.getUserName());
         user.setEmail(registerRequest.getEmail());
@@ -48,9 +46,9 @@ public class AuthService {
 
         userRepository.save(user);
 
-        String token = generateToken(user);
+        String token = generateToken(user); //Generar token
         String message = mailBuilder.build("Welcome to LeoSamERP " + user.getUserName() + "!" +
-                "Please visit the link below to activate you account : " + EMAIL_ACTIVATION + "/" + token);
+                " Please visit the link below to activate you account: " + EMAIL_ACTIVATION + "/" + token);
         mailService.sendEmail(new NotificationEmail("Please Activate Your Account", user.getEmail(), message));
     }
 
@@ -67,7 +65,7 @@ public class AuthService {
         return passwordEncoder.encode(password);
     }
 
-    private String generateToken(User user) {
+    private String generateToken(User user) { //Saving the token of a user
         String token = UUID.randomUUID().toString();
         AccountVerificationToken verificationToken = new AccountVerificationToken();
         verificationToken.setToken(token);

@@ -1,4 +1,4 @@
-package com.SamuelFumeroHdez.backend.models;
+package com.erp.backend.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

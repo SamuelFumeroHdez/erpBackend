@@ -1,4 +1,4 @@
-package com.SamuelFumeroHdez.backend.dto;
+package com.erp.backend.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

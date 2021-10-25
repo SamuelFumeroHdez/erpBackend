@@ -1,4 +1,4 @@
-package com.SamuelFumeroHdez.backend.service;
+package com.erp.backend.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.SamuelFumeroHdez.backend.config;
+package com.erp.backend.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,8 +16,11 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/api/auth/**")
                 .permitAll()
+                .antMatchers("/feedback")
+                .permitAll()
                 .anyRequest()
                 .authenticated();
+
     }
 
     @Bean

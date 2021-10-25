@@ -1,4 +1,4 @@
-package com.SamuelFumeroHdez.backend.models;
+package com.erp.backend.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,7 +38,7 @@ public class Customer {
 
     /*private Address address;*/ /** Pendiente **/
     /*private List<Invoice> invoices*/ /** Pendiente **/
-    /*private String email*/ /** Pendiente **/
-    /*private List<SubCompany> subcompanies*/
+    /*private String email*/ /** Pendiente (debe ser un List)**/
+    /*private List<SubCompany> subcompanies*/ /**Pendiente**/
 
 }
